@@ -44,7 +44,7 @@ class AdalineGD(object):
             # Please note that the "activation" method has no effect
             # in the code since it is simply an identity function. We
             # could write `output = self.net_input(X)` directly instead.
-            # The purpose of the activation is more conceptual, i.e.,  
+            # The purpose of the activation is more conceptual, i.e.,
             # in the case of logistic regression, we could change it to
             # a sigmoid function to implement a logistic regression classifier.
             output = self.activation(X)
@@ -66,7 +66,7 @@ class AdalineGD(object):
     def predict(self, X):
         """Return class label after unit step"""
         return np.where(self.activation(X) >= 0.0, 1, -1)
-		
+
 import numpy as np
 import pandas as pd
 import sys
@@ -85,25 +85,25 @@ print (y_test.shape)
 print (X_test.shape)
 #print (df_test.values)
 
-ada1 = AdalineGD(n_iter=10, eta=0.01)
+ada1 = AdalineGD(n_iter=10, eta=0.0001)
 ada1_fit = ada1.fit(X_train, y_train)
 ax[0].plot(range(1, len(ada1_fit.cost_) + 1), np.log10(ada1_fit.cost_), marker='o')
 ax[0].set_xlabel('Epochs')
 ax[0].set_ylabel('log(Sum-squared-error)')
-ax[0].set_title('Adaline - Learning rate 0.01')
-#plt.show()
-ada2 = AdalineGD(n_iter=10, eta=0.0001)
-ada2_fit = ada2.fit(X_train, y_train)
-ax[1].plot(range(1, len(ada2_fit.cost_) + 1), ada2_fit.cost_, marker='o')
-ax[1].set_xlabel('Epochs')
-ax[1].set_ylabel('Sum-squared-error')
-ax[1].set_title('Adaline - Learning rate 0.0001')
+ax[0].set_title('Adaline - Learning rate 0.0001')
+# plt.show()
+# ada2 = AdalineGD(n_iter=10, eta=0.0001)
+# ada2_fit = ada2.fit(X_train, y_train)
+# ax[1].plot(range(1, len(ada2_fit.cost_) + 1), ada2_fit.cost_, marker='o')
+# ax[1].set_xlabel('Epochs')
+# ax[1].set_ylabel('Sum-squared-error')
+# ax[1].set_title('Adaline - Learning rate 0.0001')
 
 plt.tight_layout()
 # plt.savefig('./adaline_1.png', dpi=300)
 
 y_pred = ada1.predict(X_test)
-print (y_pred)
+# print (y_pred)
 no_of_correct = 0
 temp_list=[]
 for element in y_test:
