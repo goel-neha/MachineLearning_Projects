@@ -83,7 +83,7 @@ print (y_train.shape)
 print (X_train.shape)
 print (y_test.shape)
 print (X_test.shape)
-#print (df_test.values)
+print (df_train.values)
 
 ada1 = AdalineGD(n_iter=10, eta=0.0001)
 ada1_fit = ada1.fit(X_train, y_train)

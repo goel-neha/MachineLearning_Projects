@@ -89,6 +89,7 @@ class AdalineSGD(object):
         cost = 0.5 * error**2
         return cost
 
+
     def net_input(self, X):
         """Calculate net input"""
         return np.dot(X, self.w_[1:]) + self.w_[0]
@@ -117,7 +118,7 @@ print (y_train.shape)
 print (X_train.shape)
 print (y_test.shape)
 print (X_test.shape)
-#print (df_test.values)
+print (df_train.values)
 
 ada1 = AdalineSGD(n_iter=10, eta=0.0001)
 ada1_fit = ada1.fit(X_train, y_train)
@@ -125,14 +126,14 @@ ax[0].plot(range(1, len(ada1_fit.cost_) + 1), np.log10(ada1_fit.cost_), marker='
 ax[0].set_xlabel('Epochs')
 ax[0].set_ylabel('log(Sum-squared-error)')
 ax[0].set_title('Adaline - Learning rate 0.0001')
-#plt.show()
-# ada2 = AdalineSGD(n_iter=10, eta=0.0001)
-# ada2_fit = ada2.fit(X_train, y_train)
-# ax[1].plot(range(1, len(ada2_fit.cost_) + 1), ada2_fit.cost_, marker='o')
-# ax[1].set_xlabel('Epochs')
-# ax[1].set_ylabel('Sum-squared-error')
-# ax[1].set_title('Adaline - Learning rate 0.0001')
-
+plt.show()
+ada2 = AdalineSGD(n_iter=10, eta=0.01)
+ada2_fit = ada2.fit(X_train, y_train)
+ax[1].plot(range(1, len(ada2_fit.cost_) + 1), ada2_fit.cost_, marker='o')
+ax[1].set_xlabel('Epochs')
+ax[1].set_ylabel('Sum-squared-error')
+ax[1].set_title('Adaline - Learning rate 0.01')
+plt.show()
 plt.tight_layout()
 # plt.savefig('./adaline_1.png', dpi=300)
 
